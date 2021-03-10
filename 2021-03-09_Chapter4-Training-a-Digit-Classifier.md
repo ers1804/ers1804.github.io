@@ -9,7 +9,7 @@ We take the mean of each pixel for every digit and compare a new image to see wh
 
 What is a list comprehension? Create one now that selects odd numbers from a list and doubles them.
 List comprehension saves time and computing power by combining for-loops with accessing the elements of a list.
-`list = [x for x in a_list if x%2 != 0] 
+`list = [x for x in a_list if x%2 != 0]` 
 
 What is a rank-3 tensor?
 A three-dimensional tensor.
@@ -21,12 +21,18 @@ What are RMSE and L1 norm?
 L1-norm is the mean of the absolute differences of two points. RMSE is the root of the mean of the squared differences between two points.
 
 How can you apply a calculation on thousands of numbers at once, many thousands of times faster than a Python loop?
+Using array/tensor-calculations from NumPy or PyTorch. Pytorch tensors can live on the GPU, which makes computations with them even faster.
 
 Create a 3×3 tensor or array containing the numbers from 1 to 9. Double it. Select the bottom-right four numbers.
+`tns = tensor([[1,2,3],[4,5,6],[7,8,9]])
+tns = tns*2
+tns[1:2,1:2]`
 
 What is broadcasting?
+PyTorch automatically recognizes, when two tensors have different shapes or sizes and broadcasts the size of the smaller one to that of the larger one. E.g. [1028, 28, 28] and [28,28].
 
 Are metrics generally calculated using the training set or the validation set? Why?
+A metridc is calculated on the validation set, because it tells us how good the predictions are. This also prevents overfitting.
 
 What is SGD?
 
