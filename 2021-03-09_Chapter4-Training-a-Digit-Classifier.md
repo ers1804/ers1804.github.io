@@ -109,16 +109,26 @@ Why do we have to zero the gradients?
 Because calculating gradients is an inplace operation, this means that the previous result is always saved and the new result is added to it.
 
 What information do we have to pass to Learner?
+Dataloaders, the model, the optimization function, the loss function and optionally any metrics to print
 
 Show Python or pseudocode for the basic steps of a training loop.
+def train_epoch(model):
+    for xb,yb in dl:
+        calc_grad(xb, yb, model)
+        opt.step()
+        opt.zero_grad()
 
 What is ReLU? Draw a plot of it for values from -2 to +2.
+It is a function that gives the input value if it is >= 0 or gives 0 if that is not the case.
 
 What is an activation function?
+A non-linearity between linear layers of the neural network.
 
 What’s the difference between F.relu and nn.ReLU?
+nn.ReLU is a model that can be used in nn.Sequential. F.relu just calls the Relu function.
 
 The universal approximation theorem shows that any function can be approximated as closely as needed using just one nonlinearity. So why do we normally use more?
+To reduce the number of parameters needed to get good accuracy.
 
 Further Research
 Create your own implementation of Learner from scratch, based on the training loop shown in this chapter.
