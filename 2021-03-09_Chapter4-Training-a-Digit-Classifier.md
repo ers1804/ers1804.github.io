@@ -35,44 +35,78 @@ Are metrics generally calculated using the training set or the validation set? W
 A metridc is calculated on the validation set, because it tells us how good the predictions are. This also prevents overfitting.
 
 What is SGD?
+Stochastic gradient descent. Gradient Descent that does not use the complete training set to calculate the update for the weights.
 
 Why does SGD use mini-batches?
+Because using only one sample would not yield a stable gradient. Using all samples in the training set would be computationally too expensive. Using a subset of the fullset to update gives us a stable gradient and saves computation power.
 
 What are the seven steps in SGD for machine learning?
+1. Initialize the parameters.
+2. Calculate the predictions.
+3. Calculate the loss.
+4. Calculate the gradients.
+5. Step the weights.
+6. Repeat the process.
+7. Stop.
 
 How do we initialize the weights in a model?
+We randomly initialize them.
 
 What is loss?
+Loss is the mistake that we make during predictions.
 
 Why can’t we always use a high learning rate?
+Because SGD might not converge.
 
 What is a gradient?
+It's the derivative of a function. In the case of machine learning we usually talk about a gradient at a certain position.
 
 Do you need to know how to calculate gradients yourself?
+No.
 
 Why can’t we use accuracy as a loss function?
+Because the accuracy only changes if we change the classification of one sample. Thus it wouldn't register smaller changes to the weights and the outcome. For the loss function we need a differentiable function.
 
 Draw the sigmoid function. What is special about its shape?
+S-shape. It only assigns values between 0 and 1.
 
 What is the difference between a loss function and a metric?
+A metric is to drive human understanding and a loss function is to drive machine learning.
 
 What is the function to calculate new weights using a learning rate?
+weights = weights - gradient * tau
 
 What does the DataLoader class do?
+Dataloaders return an iterator over as many batches of the data as we want. It also can shuffle the pairs.
 
 Write pseudocode showing the basic steps taken in each epoch for SGD.
+for xb, yb in data:
+      pred = model(xb)
+      loss = loss(xb,yb)
+      loss.backward()
+      for p in params:
+          p -= p.grad()* learning_rate
+      p.grad.zero_()
 
 Create a function that, if passed two arguments [1,2,3,4] and 'abcd', returns [(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]. What is special about that output data structure?
+def function(numbers, string):
+    list = [(x,y) for x,y in numbers, string]
+    return list
 
 What does view do in PyTorch?
+Returns a tensor with the same data but of a different shape.
 
 What are the bias parameters in a neural network? Why do we need them?
+The bias parameters are the b in the following equation: y = Wx+b We need them so we don't have as many 0s, since most pixels in the picture are white and thus 0.
 
 What does the @ operator do in Python?
+Matrix multiplication.
 
 What does the backward method do?
+It calculates the gradients of the function.
 
 Why do we have to zero the gradients?
+Because calculating gradients is an inplace operation, this means that the previous result is always saved and the new result is added to it.
 
 What information do we have to pass to Learner?
 
