@@ -11,40 +11,58 @@ Look up the documentation for L and try using a few of the new methods that it a
 Look up the documentation for the Python pathlib module and try using a few methods of the Path class.
 
 Give two examples of ways that image transformations can degrade the quality of the data.
+Rotating the image by 45 degrees fills the corners with emptiness. Some other augmentations might degrade data.
 
 What method does fastai provide to view the data in a DataLoaders?
+dls.show_batch(nrows=?, ncols=?)
 
 What method does fastai provide to help you debug a DataBlock?
+.summary(path/"images")
 
 Should you hold off on training a model until you have thoroughly cleaned your data?
+No, you won't get any info on how your baseline results look like and whether the data actually trains the model.
 
 What are the two pieces that are combined into cross-entropy loss in PyTorch?
+It works even when our dependent variables have more than two categories.
+It results in faster and more reliable training.
 
 What are the two properties of activations that softmax ensures? Why is this important?
+The activations are all between 0 and 1 and sum up to 1.
 
 When might you want your activations to not have these two properties?
+If we use our classifier for inference: the classifier should tell us, when it encounters a categorie that it hasn't seen before and not assign the biggest value to it.
 
 Calculate the exp and softmax columns of Figure 5-3 yourself (i.e., in a spreadsheet, with a calculator, or in a notebook).
 
 Why can’t we use torch.where to create a loss function for datasets where our label can have more than two categories?
+Because torch.where uses a binary condition and thus can only support two categories.
 
 What is the value of log(–2)? Why?
+Not defined. Because x**y!=-2
 
 What are two good rules of thumb for picking a learning rate from the learning rate finder?
+Start with a very, very small learning rate and double it after each mini-batch until the validation loss starts to increase (we have gone to far). Go back to where the minimum loss was achieved and take a learning rate of one magnitude less. Or take the last point where the loss was clearly decreasing.
 
 What two steps does the fine_tune method do?
+Freezes the pretrained layers and trains the added layers for one epoch. Then unfreezes the layers and trains them for the number of epochs given.
 
 In Jupyter Notebook, how do you get the source code for a method or function?
+by the following syntax: learn.fine_tune??
 
 What are discriminative learning rates?
+Discriminative learning rates are used for the deeper layers of the network (smaller learning rates than for the later layers).
 
 How is a Python slice object interpreted when passed as a learning rate to fastai?
+The first number will be the learning rate for the earliest layer, the second value will be used for the final layer. The layers inbetween will have learning rates that are multiplicatively equidistand throughout that range.
 
 Why is early stopping a poor choice when using 1cycle training?
+The epochs in the middle occur before the learning rate had a chance to reach the small values, thus find the best result. Better: if you encounter overfitting, retrain the model from scratch with less epochs.
 
 What is the difference between resnet50 and resnet101?
+50 layers and 101 layers.
 
 What does to_fp16 do?
+It uses half-precision floating point numbers, where possible during training. This can speed up the training process on the GPU and it uses less memory.
 
 Further Research
 Find the paper by Leslie Smith that introduced the learning rate finder, and read it.
