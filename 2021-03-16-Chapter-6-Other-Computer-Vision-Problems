@@ -1,0 +1,47 @@
+How could multi-label classification improve the usability of the bear classifier?
+If we upload an image that does not contain a bear of the three kinds that we have used for training the model, the model would still categorize it as one of the three categories because it does not have the possibility to classify it as "not a bear". Using multi-label classification this is possible.
+
+How do we encode the dependent variable in a multi-label classification problem?
+
+How do you access the rows and columns of a DataFrame as if it were a matrix?
+df.iloc[0,:]
+
+How do you get a column by name from a DataFrame?
+df['fname']
+
+What is the difference between a Dataset and DataLoader?
+Dataset returns a tuple of your independent and dependent variables of a single item.
+DataLoader is an iterator that provides a stream of mini-batches (tuple of a batch of independent variables and a batch of dependent variables).
+
+What does a Datasets object normally contain?
+It contains a training Dataset and a validation Dataset.
+
+What does a DataLoaders object normally contain?
+Training DataLoader and a validation DataLoader.
+
+What does lambda do in Python?
+Shortcut for defining and referring to a function.
+
+What are the methods to customize how the independent and dependent variables are created with the data block API?
+get_x and get_y
+
+Why is softmax not an appropriate output activation function when using a one-hot-encoded target?
+
+Why is nll_loss not an appropriate loss function when using a one-hot-encoded target?
+
+What is the difference between nn.BCELoss and nn.BCEWithLogitsLoss?
+
+Why can’t we use regular accuracy in a multi-label problem?
+
+When is it OK to tune a hyperparameter on the validation set?
+
+How is y_range implemented in fastai? (See if you can implement it yourself and test it without peeking!)
+
+What is a regression problem? What loss function should you use for such a problem?
+
+What do you need to do to make sure the fastai library applies the same data augmentation to your input images and your target point coordinates?
+
+Further Research
+Read a tutorial about Pandas DataFrames and experiment with a few methods that look interesting to you. See the book’s website for recommended tutorials.
+
+Retrain the bear classifier using multi-label classification. See if you can make it work effectively with images that don’t contain any bears, including showing that information in the web application. Try an image with two kinds of bears. Check whether the accuracy on the single-label dataset is impacted using multi-label classification.
