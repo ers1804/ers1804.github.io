@@ -2,6 +2,7 @@ How could multi-label classification improve the usability of the bear classifie
 If we upload an image that does not contain a bear of the three kinds that we have used for training the model, the model would still categorize it as one of the three categories because it does not have the possibility to classify it as "not a bear". Using multi-label classification this is possible.
 
 How do we encode the dependent variable in a multi-label classification problem?
+In one-hot notation. We have a vector whose length corresponds to the number of classes in our problem. The classes that are in the particular sample are denoted with a one in the corresponding position and the classes that are not present in the sample are denoted by a zero.
 
 How do you access the rows and columns of a DataFrame as if it were a matrix?
 df.iloc[0,:]
@@ -26,20 +27,28 @@ What are the methods to customize how the independent and dependent variables ar
 get_x and get_y
 
 Why is softmax not an appropriate output activation function when using a one-hot-encoded target?
+All predictions sum up to 1 and it tends to push one activation to be much larger than the rest. However, in this example we can very well have multiple categories present in the image (with high confidence).
 
 Why is nll_loss not an appropriate loss function when using a one-hot-encoded target?
+NLL-Loss returns the value of a single activation, which does not make any sense in this context here.
 
 What is the difference between nn.BCELoss and nn.BCEWithLogitsLoss?
+The latter performs both sigmoid and binary cross entropy while the former only computes binary cross entropy.
 
 Why can’t we use regular accuracy in a multi-label problem?
+Because we don't have single preditction for each item, but rather multiple predictions.
 
 When is it OK to tune a hyperparameter on the validation set?
+If the relationship between the hyperparameter and accuracy is smooth, it's ok to tune it on the validation set.
 
 How is y_range implemented in fastai? (See if you can implement it yourself and test it without peeking!)
+It is implemented using sigmoid_range: torch.sigmoid(x)* (hi-lo) + lo
 
 What is a regression problem? What loss function should you use for such a problem?
+A regression problem is a problem where the dependent variables are not of discrete categories but rather continuous.
 
 What do you need to do to make sure the fastai library applies the same data augmentation to your input images and your target point coordinates?
+We need to tell the DataBlock to use a PointBlock.
 
 Further Research
 Read a tutorial about Pandas DataFrames and experiment with a few methods that look interesting to you. See the book’s website for recommended tutorials.
