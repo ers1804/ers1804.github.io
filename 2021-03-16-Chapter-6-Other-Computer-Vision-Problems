@@ -45,7 +45,7 @@ How is y_range implemented in fastai? (See if you can implement it yourself and 
 It is implemented using sigmoid_range: torch.sigmoid(x)* (hi-lo) + lo
 
 What is a regression problem? What loss function should you use for such a problem?
-A regression problem is a problem where the dependent variables are not of discrete categories but rather continuous.
+A regression problem is a problem where the dependent variables are not of discrete categories but rather continuous. MSE loss since we want to be as close as possible to the target number.
 
 What do you need to do to make sure the fastai library applies the same data augmentation to your input images and your target point coordinates?
 We need to tell the DataBlock to use a PointBlock.
